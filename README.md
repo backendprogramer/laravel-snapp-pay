@@ -2,10 +2,10 @@
 
 # Payment Gateway, SnappPay
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/backendprogramer/laravel-snapp-pay.svg?style=flat-square)](https://packagist.org/packages/backendprogramer/laravel-snapp-pay)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/backendprogramer/snapp-pay.svg?style=flat-square)](https://packagist.org/packages/backendprogramer/laravel-snapp-pay)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/backendprogramer/laravel-snapp-pay/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/backendprogramer/laravel-snapp-pay/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/backendprogramer/laravel-snapp-pay/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/backendprogramer/laravel-snapp-pay/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/backendprogramer/larvel-snapp-pay.svg?style=flat-square)](https://packagist.org/packages/backendprogramer/laravel-snapp-pay)
+[![Total Downloads](https://img.shields.io/packagist/dt/backendprogramer/snapp-pay.svg?style=flat-square)](https://packagist.org/packages/backendprogramer/laravel-snapp-pay)
 
 This is a Laravel package for the SnappPay payment gateway. This package supports Laravel 10+.
 
