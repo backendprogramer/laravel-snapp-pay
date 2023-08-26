@@ -148,7 +148,7 @@ $resultCancel = $snappPay->cancelOrder($order->getPaymentToken());
 ```
 For more information about how it works, please refer to the example below.
 
-https://github.com/backendprogramer/example-laravel-snapp-pay
+https://github.com/backendprogramer/laravel-snapp-pay-example
 
 ## Testing
 
