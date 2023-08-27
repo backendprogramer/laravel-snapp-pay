@@ -18,7 +18,7 @@ This is a Laravel package for the SnappPay payment gateway. This package support
 You can install the package via composer:
 
 ```bash
-composer require backendprogramer/laravel-snapp-pay
+composer require backendprogramer/snapp-pay
 ```
 
 You can publish the config file with:
