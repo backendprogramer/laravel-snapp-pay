@@ -7,7 +7,7 @@ use BackendProgramer\SnappPay\Order\Order;
 use BackendProgramer\SnappPay\SnappPayEndpoint;
 use BackendProgramer\SnappPay\SnappPaySetting;
 use BackendProgramer\SnappPay\Traits\EndpointSettings;
-use Backendprogramer\SnappPay\Traits\OrderSettings;
+use BackendProgramer\SnappPay\Traits\OrderSettings;
 use JetBrains\PhpStorm\Pure;
 
 abstract class SnappPay implements SnappPayInterface
