@@ -20,11 +20,11 @@ class SnappPay extends AbstractsSnappPay
     #[ArrayShape(['Authorization' => 'string', 'Content-Type' => 'string'])]
     public function getRequestBasicToken(): array
     {
-        $token = 'Authorization: Basic '.base64_encode($this->setting->getClientId().':'.str_replace('amp;', '', $this->setting->getClientSecret()));
+        $token = 'Authorization: Basic ' . base64_encode($this->setting->getClientId() . ':' . str_replace('amp;', '', $this->setting->getClientSecret()));
 
         return [
             'Authorization' => $token,
-            'Content-Type'  => 'Content-Type: application/x-www-form-urlencoded',
+            'Content-Type' => 'Content-Type: application/x-www-form-urlencoded',
         ];
     }
 
@@ -43,9 +43,9 @@ class SnappPay extends AbstractsSnappPay
                 'Basic',
                 [
                     'grant_type' => 'password',
-                    'scope'      => 'online-merchant',
-                    'username'   => $this->setting->getUsername(),
-                    'password'   => str_replace('amp;', '', $this->setting->getPassword()),
+                    'scope' => 'online-merchant',
+                    'username' => $this->setting->getUsername(),
+                    'password' => str_replace('amp;', '', $this->setting->getPassword()),
                 ]
             );
             if (isset($response['status']) && $response['status'] == 'error') {
@@ -57,8 +57,8 @@ class SnappPay extends AbstractsSnappPay
         }
 
         return [
-            'Authorization' => 'Authorization: Bearer '.$bearer_token,
-            'Content-Type'  => 'Content-Type: application/json',
+            'Authorization' => 'Authorization: Bearer ' . $bearer_token,
+            'Content-Type' => 'Content-Type: application/json',
         ];
     }
 
@@ -97,16 +97,16 @@ class SnappPay extends AbstractsSnappPay
     public function getPaymentToken(Order $order, string $callBackUrl, string $transactionId): array
     {
         $amount = $this->convertPrice(
-            $order->getTotalPrice(),
+            $order->getPrice(),
             $order->getOrderCurrency(),
             Currency::RIAL
         );
 
         $data = [
-            'amount'               => $amount,
+            'amount' => $amount,
             'paymentMethodTypeDto' => 'INSTALLMENT',
-            'returnURL'            => $callBackUrl,
-            'transactionId'        => "$transactionId",
+            'returnURL' => $callBackUrl,
+            'transactionId' => "$transactionId",
             'externalSourceAmount' => 0,
         ];
 
@@ -117,7 +117,7 @@ class SnappPay extends AbstractsSnappPay
         }
 
         $data['cartList'][] = $order->buildCartList();
-        $discountAmount = $order->getPrice() - $order->getTotalPrice();
+        $discountAmount = $order->getTotalPrice() - $order->getPrice();
         $data['discountAmount'] = $discountAmount > 0 ? $this->convertPrice(
             $discountAmount,
             $order->getOrderCurrency(),
@@ -232,9 +232,9 @@ class SnappPay extends AbstractsSnappPay
             Currency::RIAL
         );
         $data = [
-            'amount'               => $amount,
+            'amount' => $amount,
             'paymentMethodTypeDto' => 'INSTALLMENT',
-            'paymentToken'         => $order->getPaymentToken(),
+            'paymentToken' => $order->getPaymentToken(),
         ];
 
         $data['cartList'][] = $order->buildCartList();
