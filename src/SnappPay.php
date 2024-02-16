@@ -52,7 +52,7 @@ class SnappPay extends AbstractsSnappPay
                 return ['status' => 'error', 'code' => 401, 'message' => 'خطای دریافت توکن'];
             }
             $bearer_token = $response['access_token'];
-            $ttl = $response['expires_in'];
+            $ttl = $response['expires_in'] + time();
             $this->setExpiredValue('snapppay_bearer_token', $bearer_token, $ttl);
         }
 
