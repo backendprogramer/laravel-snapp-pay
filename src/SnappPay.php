@@ -52,7 +52,7 @@ class SnappPay extends AbstractsSnappPay
                 return ['status' => 'error', 'code' => 401, 'message' => 'خطای دریافت توکن'];
             }
             $bearer_token = $response['access_token'];
-            $ttl = $response['expires_in'];
+            $ttl = $response['expires_in'] + time();
             $this->setExpiredValue('snapppay_bearer_token', $bearer_token, $ttl);
         }
 
@@ -227,7 +227,7 @@ class SnappPay extends AbstractsSnappPay
     public function updateOrder(Order $order): array
     {
         $amount = $this->convertPrice(
-            $order->getTotalPrice(),
+            $order->getPrice(),
             $order->getOrderCurrency(),
             Currency::RIAL
         );
@@ -238,7 +238,7 @@ class SnappPay extends AbstractsSnappPay
         ];
 
         $data['cartList'][] = $order->buildCartList();
-        $discountAmount = $order->getPrice() - $order->getTotalPrice();
+        $discountAmount = $order->getTotalPrice() - $order->getPrice();
         $data['discountAmount'] = $discountAmount > 0 ? $this->convertPrice(
             $discountAmount,
             $order->getOrderCurrency(),
@@ -247,7 +247,7 @@ class SnappPay extends AbstractsSnappPay
 
         return $this->request(
             $this->endPoint->getUpdateOrder(EPType::URL),
-            EPType::METHOD,
+            $this->endPoint->getUpdateOrder(EPType::METHOD),
             'Bearer',
             $data
         );

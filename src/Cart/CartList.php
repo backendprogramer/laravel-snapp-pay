@@ -23,7 +23,7 @@ class CartList extends AbstractsCartList
             'shippingAmount'     => self::convertPrice($this->shippingAmount, $this->currency, Currency::RIAL),
             'isShipmentIncluded' => $this->isShipmentIncluded,
             'taxAmount'          => self::convertPrice($this->taxAmount, $this->currency, Currency::RIAL),
-            'isTaxIncluded'      => $this->isTaxIncluded,
+            'isTaxIncluded'      => $this->isTaxIncluded  ,
         ];
         $items = [];
 
