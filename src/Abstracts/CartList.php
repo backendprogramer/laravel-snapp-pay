@@ -80,7 +80,7 @@ abstract class CartList implements CartListInterface
         $this->shippingAmount = $order->getShippingAmount();
         $this->isShipmentIncluded = $order->getShippingAmount() > 0;
         $this->taxAmount = $order->getTaxAmount();
-        $this->isTaxIncluded = $order->getTaxAmount() > 0;
+        $this->isTaxIncluded = $order->getTaxAmount() >= 0;
         $this->currency = $order->getOrderCurrency();
 
         foreach ($order->getOrderProducts() as $product) {
